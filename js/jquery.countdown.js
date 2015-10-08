@@ -40,25 +40,42 @@
 			// Number of days left
 			d = Math.floor(left / days);
 			if (d >= 100){
-				digits = 2
-			}
-			else d = 1
-			updateDuo(0, digits, d);
+				updateDuo(0, 2, d);
 			left -= d*days;
 			
 			// Number of hours left
 			h = Math.floor(left / hours);
-			updateDuo(digits + 1, digits + 2, h);
+			updateDuo(3, 4, h);
 			left -= h*hours;
 			
 			// Number of minutes left
 			m = Math.floor(left / minutes);
-			updateDuo(digits +3, digits +4, m);
+			updateDuo(5, 6, m);
 			left -= m*minutes;
 			
 			// Number of seconds left
 			s = left;
-			updateDuo(digits+5, digits+6, s);
+			updateDuo(7, 8, s);
+			}
+			else{
+				updateDuo(0, 1, d);
+			left -= d*days;
+			
+			// Number of hours left
+			h = Math.floor(left / hours);
+			updateDuo(2, 3, h);
+			left -= h*hours;
+			
+			// Number of minutes left
+			m = Math.floor(left / minutes);
+			updateDuo(4, 5, m);
+			left -= m*minutes;
+			
+			// Number of seconds left
+			s = left;
+			updateDuo(6, 7, s);
+			}
+			
 			
 			// Calling an optional user supplied callback
 			options.callback(d, h, m, s);
