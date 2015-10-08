@@ -40,7 +40,7 @@
 			// Number of days left
 			d = Math.floor(left / days);
 			if (d >= 100){
-				updateDuo(0, 2, d);
+				updateTrio(0,1, 2, d);
 			left -= d*days;
 			
 			// Number of hours left
@@ -89,7 +89,11 @@
 			switchDigit(positions.eq(minor),Math.floor(value/10)%10);
 			switchDigit(positions.eq(major),value%10);
 		}
-		
+		function updateTrio(minor, middle, major,value){
+        	switchDigit(positions.eq(minor),Math.floor(value/100)%10);
+        	switchDigit(positions.eq(middle),Math.floor(value/10)%10);
+        	switchDigit(positions.eq(major),value%10);
+    	}
 		return this;
 	};
 
