@@ -21,7 +21,7 @@
 			timestamp	: 0
 		},prop);
 		
-		var left, d, h, m, s, positions;
+		var left, d, h, m, s, positions, digits;
 
 		// Initialize the plugin
 		init(this, options);
@@ -39,22 +39,26 @@
 			
 			// Number of days left
 			d = Math.floor(left / days);
-			updateDuo(0, 1, d);
+			if (d >= 100){
+				digits = 2
+			}
+			else d = 1
+			updateDuo(0, digits, d);
 			left -= d*days;
 			
 			// Number of hours left
 			h = Math.floor(left / hours);
-			updateDuo(2, 3, h);
+			updateDuo(digits + 1, digits + 2, h);
 			left -= h*hours;
 			
 			// Number of minutes left
 			m = Math.floor(left / minutes);
-			updateDuo(4, 5, m);
+			updateDuo(digits +3, digits +4, m);
 			left -= m*minutes;
 			
 			// Number of seconds left
 			s = left;
-			updateDuo(6, 7, s);
+			updateDuo(digits+5, digits+6, s);
 			
 			// Calling an optional user supplied callback
 			options.callback(d, h, m, s);
