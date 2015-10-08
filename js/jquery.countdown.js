@@ -102,32 +102,52 @@
 		elem.addClass('countdownHolder');
 
 		// Creating the markup inside the container
-		$('<span class="countDays">').html(
-            '<span class="position">\
-                <span class="digit static">0</span>\
-            </span>\
-            <span class="position">\
-                <span class="digit static">0</span>\
-            </span>\
-          <span class="position">\
-                <span class="digit static">0</span>\
-            </span>'
-        ).appendTo(elem);
-  elem.append('<span class="countDiv countDivDays"></span>');
-    // Creating the markup inside the container
-    $.each(['Hours','Minutes','Seconds'],function(i){
-        $('<span class="count'+this+'">').html(
-            '<span class="position">\
-                <span class="digit static">0</span>\
-            </span>\
-            <span class="position">\
-                <span class="digit static">0</span>\
-            </span>'
-        ).appendTo(elem);
-
-        if(this!="Seconds"){
-            elem.append('<span class="countDiv countDiv'+i+'"></span>');
-        }
+		$.each(['Days','Hours','Minutes','Seconds'],function(i){
+			var boxName;
+			if(this=="Days") {
+				boxName = "DAYS";
+			}
+			else if(this=="Hours") {
+				boxName = "HRS";
+			}
+			else if(this=="Minutes") {
+				boxName = "MNTS";
+			}
+			else {
+				boxName = "SECS";
+			}
+			if(this=="Days"){
+					$('<div class="count'+this+'">' +
+					'<span class="position">' +
+						'<span class="digit static">0</span>' +
+					'</span>' +
+					'<span class="position">' +
+						'<span class="digit static">0</span>' +
+					'</span>' +
+					'<span class="position">' +
+						'<span class="digit static">0</span>' +
+					'</span>' +
+					'<span class="boxName">' +
+						'<span class="'+this+'">' + boxName + '</span>' +
+					'</span>'
+				).appendTo(elem);
+			}
+			else{
+				$('<div class="count'+this+'">' +
+					'<span class="position">' +
+						'<span class="digit static">0</span>' +
+					'</span>' +
+					'<span class="position">' +
+						'<span class="digit static">0</span>' +
+					'</span>' +
+					'<span class="boxName">' +
+						'<span class="'+this+'">' + boxName + '</span>' +
+					'</span>'
+				).appendTo(elem);
+			}
+			if(this!="Seconds"){
+				elem.append('<span class="points">:</span><span class="countDiv countDiv'+i+'"></span>');
+			}
 		});
 
 	}
