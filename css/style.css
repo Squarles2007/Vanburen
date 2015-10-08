@@ -375,7 +375,15 @@ i.heart{
 }
 /* ---------- TIMER ---------- */
 
-.countDays,.countHours,.countMinutes,.countSeconds {
+.countDays{
+	background: rgb(255, 255, 255);
+    width: 12%;
+    float: left;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-right: 20px;
+}
+.countHours,.countMinutes,.countSeconds {
     background: rgb(255, 255, 255);
     width: 9%;
     float: left;
